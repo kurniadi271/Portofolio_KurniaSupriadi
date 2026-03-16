@@ -303,14 +303,11 @@ Provincial Housing and Settlement Agency (DISPERAKIM).</p>
   <div class="card-block">
     <div class="card" id="contact"><h2>Contact</h2></div>
     
-    <form action="https://formsubmit.co/supriadikurnia271@gmail.com" method="POST" class="reveal-content">
-      
-      <input type="hidden" name="_next" value="https://kurniadi271.github.io/Portofolio_KurniaSupriadi/">
+    <form id="contactForm" action="https://formsubmit.co/supriadikurnia271@gmail.com" method="POST" class="reveal-content">
       
       <input type="hidden" name="_captcha" value="false">
-
       <div class="form-group">
-        <input type="email" name="email" class="form-control" id="email" placeholder="Your Email" required>
+        <input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
       </div>
       <div class="form-group">
         <input type="text" name="_subject" class="form-control" id="subject" placeholder="Subject" required>
@@ -319,13 +316,55 @@ Provincial Housing and Settlement Agency (DISPERAKIM).</p>
         <textarea name="message" class="form-control" rows="5" placeholder="Enter your message" required></textarea>
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-primary">Send message</button>
+        <button type="submit" id="submitBtn" class="btn btn-primary">Send message</button>
       </div> 
     </form>
+
+    <div id="thankYouMessage" style="display: none; text-align: center; padding: 20px; background-color: #d4edda; color: #155724; border-radius: 5px; margin-top: 20px;">
+      <h4>Pesan Terkirim!</h4>
+      <p>Terima kasih telah menghubungi saya. Pesan Anda sudah masuk dan akan segera saya balas.</p>
+    </div>
     
   </div>
 </div>
-</div>
+
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function(event) {
+    // 1. Mencegah website refresh atau scroll ke atas
+    event.preventDefault();
+
+    var form = event.target;
+    var btn = document.getElementById("submitBtn");
+    var thankYouMessage = document.getElementById("thankYouMessage");
+
+    // 2. Ubah teks tombol biar keren saat lagi loading ngirim
+    btn.innerHTML = "Sending...";
+    btn.disabled = true;
+
+    // 3. Mengirim data ke FormSubmit di latar belakang
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: {
+        'Accept': 'application/json' // Meminta FormSubmit merespons tanpa pindah halaman
+      }
+    }).then(response => {
+      if (response.ok) {
+        // 4. Kalau sukses, sembunyikan form dan munculkan ucapan terima kasih
+        form.style.display = "none";
+        thankYouMessage.style.display = "block";
+      } else {
+        alert("Oops! Ada masalah saat mengirim pesan.");
+        btn.innerHTML = "Send message";
+        btn.disabled = false;
+      }
+    }).catch(error => {
+      alert("Oops! Ada masalah jaringan.");
+      btn.innerHTML = "Send message";
+      btn.disabled = false;
+    });
+  });
+</script>
      </div>
    </div>
  </div>
