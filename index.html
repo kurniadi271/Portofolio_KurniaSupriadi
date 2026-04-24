@@ -1,452 +1,1032 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <meta charset="UTF-8">
-  <meta content="IE=edge" http-equiv="X-UA-Compatible">
-  <meta content="width=device-width,initial-scale=1" name="viewport">
-  <meta content="description" name="description">
-  <meta name="google" content="notranslate" />
-  <meta content="Mashup templates have been developped by Orson.io team" name="author">
-<!-- AOS CSS -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <!-- Disable tap highlight on IE -->
-  <meta name="msapplication-tap-highlight" content="no">
-  
-  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-icon-180x180.png">
-  <link href="./assets/favicon.ico" rel="icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kurnia Supriadi — Urban Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=JetBrains+Mono:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  <title>Portofolio Kurnia Supriadi</title>  
+    :root {
+      --bg: #06090f;
+      --bg2: #0c1220;
+      --bg3: #111827;
+      --teal: #00c9a7;
+      --teal-dim: #007a66;
+      --amber: #f5a623;
+      --amber-dim: #7a5012;
+      --white: #f0f4f8;
+      --muted: #8899aa;
+      --border: rgba(0,201,167,0.18);
+      --border2: rgba(0,201,167,0.08);
+      --grid-line: rgba(0,201,167,0.05);
+    }
 
-<link href="./main.d8e0d294.css" rel="stylesheet"></head>
-<!-- AOS JS -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
-<body class="">
-<nav style="position: fixed; top: 20px; right: 30px; z-index: 1000;">
-  <ul style="list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; font-family: Arial, sans-serif;">
-    <a href="#about" style="text-decoration: none; border-bottom: none; color: rgb(1, 1, 1);">About</a>
-    <li><a href="#project" style="text-decoration: none; color: rgb(6, 4, 4);">Project</a></li>
-    <li><a href="#work" style="text-decoration: none; color: rgb(2, 1, 1);">Work</a></li>
-    <li><a href="#education" style="text-decoration: none; color: rgb(0, 0, 0);">Education</a></li>
-    <li><a href="#contact" style="text-decoration: none; color: rgb(0, 0, 0);">Contact</a></li>
-  </ul>
-</nav>
-<!-- Add your content of header -->
-<div class="background-color-layer" style="background-image: url('assets/images/img-01.jpg')"
-></div>
-<main class="content-wrapper">
-  <header class="white-text-container section-container">
-    <div class="text-center">
-      <h1>I am Kurnia Supriadi</h1>
-      <p>Urban and Regional Planning</p>
-      <p>
+    html { scroll-behavior: smooth; }
 
-      </p>
-    </div>
-  </header>
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
 
+    /* ── GRID BACKGROUND ─────────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
 
+    /* ── NAV ─────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 3rem;
+      background: rgba(6,9,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border2);
+    }
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--teal);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none;
+    }
+    .nav-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--teal);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-links a:hover::after { width: 100%; }
 
-<!-- Add your site or app content here -->
- 
- <div class="container">
-   <div class="row">
-     <div class="col-xs-12">
+    /* ── HERO ────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 0 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .hero-bg-circle.c1 {
+      width: 500px; height: 500px;
+      background: rgba(0,201,167,0.07);
+      top: -100px; right: -100px;
+    }
+    .hero-bg-circle.c2 {
+      width: 300px; height: 300px;
+      background: rgba(245,166,35,0.06);
+      bottom: 50px; left: 200px;
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 800px;
+    }
+    .hero-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--teal);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .hero-label::before {
+      content: '';
+      display: block; width: 30px; height: 1px;
+      background: var(--teal);
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .hero-name span { color: var(--teal); }
+    .hero-tagline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: var(--teal);
+      color: var(--bg);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-primary:hover {
+      background: var(--amber);
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      border: 1px solid var(--border);
+      color: var(--teal);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-outline:hover {
+      border-color: var(--teal);
+      background: rgba(0,201,167,0.07);
+    }
+    .hero-coords {
+      position: absolute; bottom: 3rem; right: 3rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: rgba(136,153,170,0.4);
+      text-align: right;
+      line-height: 1.8;
+    }
+    .scroll-hint {
+      position: absolute; bottom: 3rem; left: 3rem;
+      display: flex; align-items: center; gap: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: rgba(136,153,170,0.5);
+      letter-spacing: 0.1em;
+    }
+    .scroll-line {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, transparent, var(--teal));
+      animation: scrollpulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollpulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
 
-        <div class="card">
-          <div class="card-block">
-            <div class="card" id="about"><h2>About me</h2>
-            <div class="row">
-              <div class="col-md-4">
-                <p><img src="./assets/images/img-01.jpg" class="img-responsive" alt="Profile" style="margin-right: 40px;"></p>
-              </div>
-              <div class="col-md-8"> </div>     <!-- ✅ cocok dengan #about -->
-            
+    /* ── SECTION WRAPPER ─────────────────────────────────────── */
+    section {
+      position: relative; z-index: 1;
+      padding: 7rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--teal);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .section-label::before {
+      content: '';
+      display: block; width: 20px; height: 1px;
+      background: var(--teal);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 3.5rem;
+    }
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border2);
+      position: relative; z-index: 1;
+    }
 
-              <p>A graduate in Urban and Regional Planning from Sultan Agung Islamic University with hands-on experience in field data
-collection and urban research. Skilled in QGIS for academic spatial analysis and mapping, with strong interest in applying
-geospatial tools for evidence-based urban development and policy planning.</p>
-<h2>Skills</h2>
-  <ul><ul class="skill-list"></ul>
-   <li>QGIS – Spatial Analysis, Digitizing, Map Styling</li>
-    <li>Sketchup – Site Planning, Twinmotion for Rendering</li>
-    <li>Microsoft office – Data Cleaning & Visualization</li>
-    <li>HTML/CSS – WebGIS presentation</li>
-    <li>Teamwork, Adaptability, Communication</li>
+    /* ── ABOUT ───────────────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-photo-wrap {
+      position: relative;
+    }
+    .about-photo-wrap::before {
+      content: '';
+      position: absolute;
+      top: -12px; left: -12px;
+      right: 12px; bottom: 12px;
+      border: 1px solid var(--border);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .about-photo-wrap img {
+      width: 100%;
+      display: block;
+      position: relative; z-index: 1;
+      filter: grayscale(30%) contrast(1.05);
+    }
+    .about-text p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: rgba(240,244,248,0.75);
+      margin-bottom: 2rem;
+    }
+    .skill-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+    .skill-item {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .skill-item::before {
+      content: '◆';
+      color: var(--teal);
+      font-size: 0.5rem;
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+    }
+
+    /* ── WORK EXPERIENCE ─────────────────────────────────────── */
+    .work-list { display: flex; flex-direction: column; gap: 0; }
+    .work-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border2);
+      position: relative;
+      transition: background 0.3s;
+    }
+    .work-item::before {
+      content: '';
+      position: absolute; left: -3rem; top: 0; bottom: 0;
+      width: 0;
+      background: linear-gradient(90deg, rgba(0,201,167,0.04), transparent);
+      transition: width 0.4s;
+    }
+    .work-item:hover::before { width: calc(100% + 6rem); }
+    .work-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      padding-top: 0.25rem;
+    }
+    .work-company {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .work-role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--amber);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+    .work-desc {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: rgba(240,244,248,0.6);
+    }
+
+    /* ── PROJECTS ────────────────────────────────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      overflow: hidden;
+      position: relative;
+      transition: border-color 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
+    .project-card:hover {
+      border-color: var(--border);
+      transform: translateY(-4px);
+    }
+    .project-img {
+      width: 100%; aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(20%) brightness(0.85);
+      transition: filter 0.4s, transform 0.4s;
+    }
+    .project-card:hover .project-img {
+      filter: grayscale(0%) brightness(1);
+      transform: scale(1.03);
+    }
+    .project-info {
+      padding: 1.25rem 1.25rem 1.5rem;
+    }
+    .project-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--teal);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.5rem;
+    }
+    .project-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
+    }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--teal);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: gap 0.3s;
+    }
+    .project-link:hover { gap: 0.6rem; }
+    .project-link::after { content: '→'; }
+
+    /* ── EDUCATION ───────────────────────────────────────────── */
+    .edu-card {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 2.5rem;
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      padding: 2.5rem;
+      transition: border-color 0.3s;
+    }
+    .edu-card:hover { border-color: var(--border); }
+    .edu-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--teal);
+    }
+    .edu-degree {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .edu-field {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--amber);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+    .edu-school {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .gpa-badge {
+      display: inline-block;
+      padding: 0.35rem 0.85rem;
+      border: 1px solid var(--teal-dim);
+      background: rgba(0,201,167,0.06);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--teal);
+      letter-spacing: 0.1em;
+    }
+    .lang-row {
+      display: flex; gap: 1.5rem; margin-top: 2.5rem;
+    }
+    .lang-badge {
+      display: flex; flex-direction: column;
+      gap: 0.3rem;
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      padding: 1rem 1.5rem;
+    }
+    .lang-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .lang-level {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--teal);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ── CONTACT ─────────────────────────────────────────────── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-info { }
+    .contact-tagline {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 2rem;
+      color: rgba(240,244,248,0.85);
+    }
+    .contact-social {
+      display: flex; flex-direction: column; gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    .social-link {
+      display: flex; align-items: center; gap: 1rem;
+      text-decoration: none;
+      padding: 0.85rem 1.2rem;
+      border: 1px solid var(--border2);
+      background: var(--bg2);
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .social-link:hover {
+      border-color: var(--border);
+      background: rgba(0,201,167,0.04);
+    }
+    .social-icon {
+      width: 32px; height: 32px;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem;
+      color: var(--teal);
+    }
+    .social-text { display: flex; flex-direction: column; gap: 0.1rem; }
+    .social-platform {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .social-handle {
+      font-size: 0.9rem;
+      color: var(--white);
+      font-weight: 400;
+    }
+
+    /* ── CONTACT FORM ────────────────────────────────────────── */
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-field {
+      display: flex; flex-direction: column; gap: 0.4rem;
+    }
+    .form-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--teal);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .form-input, .form-textarea {
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      padding: 0.85rem 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+      width: 100%;
+    }
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--teal);
+      background: rgba(0,201,167,0.03);
+    }
+    .form-textarea { resize: vertical; min-height: 120px; }
+    .form-submit {
+      background: transparent;
+      border: 1px solid var(--teal);
+      color: var(--teal);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      align-self: flex-start;
+    }
+    .form-submit:hover {
+      background: var(--teal);
+      color: var(--bg);
+    }
+    .thank-you {
+      display: none;
+      background: rgba(0,201,167,0.08);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--teal);
+      letter-spacing: 0.05em;
+      line-height: 1.8;
+      margin-top: 1rem;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────────── */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border2);
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+    }
+    .footer-copy {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      color: rgba(136,153,170,0.4);
+    }
+
+    /* ── GAMES SECTION ───────────────────────────────────────── */
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1.5rem;
+    }
+    .game-card {
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .game-card:hover {
+      border-color: var(--border);
+      transform: translateY(-4px);
+    }
+    .game-img {
+      width: 100%; aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(40%) brightness(0.7);
+      transition: filter 0.4s;
+    }
+    .game-card:hover .game-img {
+      filter: grayscale(0%) brightness(1);
+    }
+    .game-info { padding: 1.25rem; }
+    .game-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--amber);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .game-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .game-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--amber);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: gap 0.3s;
+    }
+    .game-link:hover { gap: 0.6rem; }
+    .game-link::after { content: '→'; }
+
+    /* ── ANIMATIONS ──────────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      section { padding: 5rem 1.5rem; }
+      .hero { padding: 0 1.5rem; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .projects-grid, .games-grid { grid-template-columns: 1fr 1fr; }
+      .work-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .edu-card { grid-template-columns: 1fr; gap: 1rem; }
+      footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+      .hero-coords, .scroll-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">KS // Urban Planner</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
+  </nav>
 
-             <ul style="padding-left: 20px;"></ul> 
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="card">
-  <div class="card-block">
-    <div class="card" id="project"><h2>Projects</h2></div>
-    
-    <div class="row">
-      <div class="col-md-4">
-        <img src="./assets/images/img-02.jpg" class="img-responsive" alt="">
-        <h3 class="h5">Peta Administrasi untuk Tugas Akhir</h3>
-        <p>Desember 2024</p>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg-circle c1"></div>
+    <div class="hero-bg-circle c2"></div>
+    <div class="hero-content">
+      <div class="hero-label">Urban &amp; Regional Planning</div>
+      <h1 class="hero-name">Kurnia<br><span>Supriadi</span></h1>
+      <div class="hero-tagline">
+        QGIS · Spatial Analysis · WebGIS · Site Planning<br>
+        Semarang, Central Java — Indonesia
       </div>
-      <div class="col-md-4">
-        <img src="./assets/images/img-03.jpg" class="img-responsive" alt="">
-        <h3 class="h5">Personal Project landscape</h3>
-        <p>2025</p>
-      </div>
-      <div class="col-md-4">
-        <img src="./assets/images/img-04.jpg" class="img-responsive" alt="">
-        <h3 class="h5">WebGIS Visualiasi Jaringan Jalan Semarang</h3>
-        <p>2025</p>
-        <p class="social-buttons">
-          <a href="https://kurniadi271.github.io/jaringanjalansemarang/" title="Github">
-            <span class="social-round-icon fa-icon">
-              <i class="fa fa-globe"></i>
-            </span>
-            Webgis Link
-          </a>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
       </div>
     </div>
-
-    <br><br> 
-
-    <div class="row">
-      <div class="col-md-4">
-        <img src="./assets/images/img-11.jpg" class="img-responsive" alt="">
-        <h3 class="h5">Bedroom</h3>
-        <p>2025 / Personal Project</p>
-      </div>
-      <div class="col-md-4">
-        <img src="./assets/images/img-10.jpg" class="img-responsive" alt="">
-        <h3 class="h5">Laundry room</h3>
-        <p>2025 / Interior Design</p>
-      </div>
-     <div class="col-md-4">
-  <img src="./assets/images/img-09.jpg" class="img-responsive" alt="">
-  <h3 class="h5">Website Profile</h3>
-  <p>2019 / Academic project</p>
-  
-  <p class="social-buttons">
-    <a href="https://kurniadi271.github.io/Profil_Desa_Ketapang/" title="Github" style="white-space: nowrap; text-decoration: none;">
-      <span class="social-round-icon fa-icon">
-        <i class="fa fa-github"></i>
-      </span> 
-      Website Link 
-    </a>
-  </p>
-</div>
-
-</div>
- </div>
-</div>
-
-        <div class="card">
-          <div class="card-block">
-            <div class="card" id="work"><h2>Work</h2></div>
-<div class="work-experience">
-    <div class="work-experience">
-  <small class="date">AGU 2025 – SEP 2025</small>
-  <h3 class="h5 date-title">BADAN PERAKITAN DAN MODERNISASI PERTANIAN (KEMENTERIAN PERTANIAN)</h3>
-  <p><strong>Computer Aided Design Operator</strong><br>
-  Computer Aided Design Operator BRMP SDLP- Survey Investigation and Design (SID) Project, Ogan Komering Ilir
-Regency (5,000 Ha),Supported the Survey Investigation and Design (SID) activites by processing spatial and technical data
-using CAD software,Collaborated with the technical team to visualize survey result into technical drawings according to project
-standars.</p>
-</div>
-      <small class="date">MAY–OCT 2022</small>
-      <h3 class="h5 date-title">CV. HRV PLANNER CONSULTANT</h3>
-      <p>Surveyor for the preparation of the Detailed Spatial Plan (RDTR) for the Siwalan Planning Area, Pekalongan Regency.</p>
+    <div class="hero-coords">
+      LAT -6.966667<br>
+      LNG 110.416664<br>
+      SEMARANG, ID
     </div>
-            <div class="work-experience">
-              <small class="date">JUN-SEP 2022</small>
-              <h3 class="h5 date-title">CV. ARTHA GEMILANG ENGINEERING </h3>
-              
-
-              <p>Internship in the Preparation of the Sanitation Strategy Document for Kendal Regency</p>
-            </div>
-
-            <div class="work-experience">
-              <small class="date">FEB-MAY 2022</small>
-              <h3 class="h5 date-title">CV. PIJAR MULYA WISESA </h3>
-              
-              <p>Surveyor and data entry operator for the verification and validation of Uninhabitable Houses (RTLH) and housing
-backlog in Pekalongan Regency, covering 25 villages and 5 sub-districts, in collaboration with the Central Java
-Provincial Housing and Settlement Agency (DISPERAKIM).</p>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="card">
-          <div class="card-block">
-            <div class="card" id="education"><h2>Education</h2></div>
-            <div class="row">
-              <div class="col-md-4">
-                <div class="education-experience">
-                  <small class="date">2018-2024</small>
-                  <h3 class="h5 date-title">Bachelor's Degree</h3>
-                  <p> Urban and Regional Planning</p>
-                  <p> GPA 3,41</p>
-                  <p>Universitas Islam Sultan Agung Semarang</p>
-                </div>
-                
-              </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="card">
-          <div class="card-block">
-            <h2>Language</h2>
-            <div class="row">
-              <div class="col-md-4">
-                <div class="language-experience">
-                  <h3 class="h5">Indonesia  <small>professionnal</small></h3>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="language-experience">
-                  <h3 class="h5">English  <small>intermediate</small></h3>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="language-experience">
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-block">
-            <h2>Projects</h2>
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-              <div class="item active">
-                <img src="./assets/images/img-05.jpg" class="img-responsive" alt="...">
-                <div class="carousel-caption">
-                  <h3 class="h5">Personal project</h3>
-                  <p>2024</p>
-                </div>
-              </div>
-              <div class="item">
-                <img src="./assets/images/img-06.jpg" class="img-responsive" alt="...">
-                <div class="carousel-caption">
-                  <h3 class="h5">Personal Project</h3>
-                  <p>2024</p>
-                </div>
-              </div>
-
-              <div class="item">
-                <img src="./assets/images/img-08.jpg" class="img-responsive" alt="...">
-                <div class="carousel-caption">
-                  <h3 class="h5">Personal Project</h3>
-                  <p>2026</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
-
-          </div>
-          </div>
-        </div>
-        
-<div class="card">
-  <div class="card-block">
-    <h2>Social Network</h2>
-    <div class="row">
-      <div class="col-md-4">
-        <p class="social-buttons">
-          <a href="https://www.instagram.com/kurniaaspd/" title="Instagram">
-            <span class="social-round-icon fa-icon">
-              <i class="fa fa-instagram"></i>
-            </span>
-            @kurniaaspd
-          </a>
-        </p>
-      </div>
-      <div class="col-md-4">
-        <p class="social-buttons">
-          <a href="https://www.linkedin.com/in/kurniasupriadi" title="LinkedIn">
-            <span class="social-round-icon fa-icon">
-              <i class="fa fa-linkedin"></i>
-            </span>
-            Kurnia Supriadi
-          </a>
-        </p>
-      </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      SCROLL
     </div>
   </div>
-</div>
-<div class="card">
-  <div class="card-block">
-    <div class="card" id="contact"><h2>Contact</h2></div>
-    
-    <form id="contactForm" action="https://formsubmit.co/supriadikurnia271@gmail.com" method="POST" class="reveal-content">
-      
-      <input type="hidden" name="_captcha" value="false">
-      <div class="form-group">
-        <input type="email" name="email" class="form-control" id="email" placeholder="Your Email" required>
-      </div>
-      <div class="form-group">
-        <input type="text" name="_subject" class="form-control" id="subject" placeholder="Subject" required>
-      </div>
-      <div class="form-group">
-        <textarea name="message" class="form-control" rows="5" placeholder="Enter your message" required></textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit" id="submitBtn" class="btn btn-primary">Send message</button>
-      </div> 
-    </form>
 
-    <div id="thankYouMessage" style="display: none; text-align: center; padding: 20px; background-color: #d4edda; color: #155724; border-radius: 5px; margin-top: 20px;">
-      <h4>Pesan Terkirim!</h4>
-      <p>Terima kasih telah menghubungi saya. Pesan Anda sudah masuk dan akan segera saya balas.</p>
+  <div class="section-divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="fade-up">
+      <div class="section-label">01 / Profile</div>
+      <h2 class="section-title">About Me</h2>
     </div>
-    
-  </div>
-</div>
+    <div class="about-grid fade-up">
+      <div class="about-photo-wrap">
+        <img src="./assets/images/img-01.jpg" alt="Kurnia Supriadi">
+      </div>
+      <div class="about-text">
+        <p>A graduate in Urban and Regional Planning from Sultan Agung Islamic University with hands-on experience in field data collection and urban research. Skilled in QGIS for academic spatial analysis and mapping, with strong interest in applying geospatial tools for evidence-based urban development and policy planning.</p>
+        <div class="skill-grid">
+          <div class="skill-item">QGIS – Spatial Analysis, Digitizing, Map Styling</div>
+          <div class="skill-item">Sketchup – Site Planning, Twinmotion Rendering</div>
+          <div class="skill-item">Microsoft Office – Data &amp; Visualization</div>
+          <div class="skill-item">HTML/CSS – WebGIS Presentation</div>
+          <div class="skill-item">Teamwork &amp; Communication</div>
+          <div class="skill-item">Adaptability &amp; Field Research</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>
-  document.getElementById("contactForm").addEventListener("submit", function(event) {
-    // 1. Mencegah website refresh atau scroll ke atas
-    event.preventDefault();
+  <div class="section-divider"></div>
 
-    var form = event.target;
-    var btn = document.getElementById("submitBtn");
-    var thankYouMessage = document.getElementById("thankYouMessage");
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="fade-up">
+      <div class="section-label">02 / Selected Work</div>
+      <h2 class="section-title">Projects</h2>
+    </div>
+    <div class="projects-grid fade-up">
+      <div class="project-card">
+        <div style="overflow:hidden">
+          <img src="./assets/images/img-02.jpg" class="project-img" alt="Peta Administrasi">
+        </div>
+        <div class="project-info">
+          <div class="project-year">DEC 2024 · QGIS</div>
+          <div class="project-name">Peta Administrasi untuk Tugas Akhir</div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div style="overflow:hidden">
+          <img src="./assets/images/img-03.jpg" class="project-img" alt="Landscape">
+        </div>
+        <div class="project-info">
+          <div class="project-year">2025 · PERSONAL</div>
+          <div class="project-name">Personal Project Landscape</div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div style="overflow:hidden">
+          <img src="./assets/images/img-04.jpg" class="project-img" alt="WebGIS">
+        </div>
+        <div class="project-info">
+          <div class="project-year">2025 · WEBGIS</div>
+          <div class="project-name">Visualisasi Jaringan Jalan Semarang</div>
+          <a href="https://kurniadi271.github.io/jaringanjalansemarang/" target="_blank" class="project-link">Open WebGIS</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div style="overflow:hidden">
+          <img src="./assets/images/img-11.jpg" class="project-img" alt="Bedroom">
+        </div>
+        <div class="project-info">
+          <div class="project-year">2025 · INTERIOR DESIGN</div>
+          <div class="project-name">Bedroom — 3D Visualization</div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div style="overflow:hidden">
+          <img src="./assets/images/img-10.jpg" class="project-img" alt="Laundry">
+        </div>
+        <div class="project-info">
+          <div class="project-year">2025 · INTERIOR DESIGN</div>
+          <div class="project-name">Laundry Room Concept</div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div style="overflow:hidden">
+          <img src="./assets/images/img-09.jpg" class="project-img" alt="Website">
+        </div>
+        <div class="project-info">
+          <div class="project-year">2019 · ACADEMIC</div>
+          <div class="project-name">Website Profil Desa Ketapang</div>
+          <a href="https://kurniadi271.github.io/Profil_Desa_Ketapang/" target="_blank" class="project-link">View Website</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    // 2. Ubah teks tombol biar keren saat lagi loading ngirim
-    btn.innerHTML = "Sending...";
-    btn.disabled = true;
+  <div class="section-divider"></div>
 
-    // 3. Mengirim data ke FormSubmit di latar belakang
-    fetch(form.action, {
-      method: form.method,
-      body: new FormData(form),
-      headers: {
-        'Accept': 'application/json' // Meminta FormSubmit merespons tanpa pindah halaman
-      }
-    }).then(response => {
-      if (response.ok) {
-        // 4. Kalau sukses, sembunyikan form dan munculkan ucapan terima kasih
-        form.style.display = "none";
-        thankYouMessage.style.display = "block";
-      } else {
-        alert("Oops! Ada masalah saat mengirim pesan.");
-        btn.innerHTML = "Send message";
+  <!-- WORK -->
+  <section id="work">
+    <div class="fade-up">
+      <div class="section-label">03 / Experience</div>
+      <h2 class="section-title">Work</h2>
+    </div>
+    <div class="work-list fade-up">
+      <div class="work-item">
+        <div class="work-date">AUG – SEP 2025</div>
+        <div>
+          <div class="work-company">Kementerian Pertanian — BRMP SDLP</div>
+          <div class="work-role">Computer Aided Design Operator</div>
+          <div class="work-desc">Survey Investigation and Design (SID) Project, Ogan Komering Ilir Regency (5,000 Ha). Processed spatial and technical data using CAD software; collaborated with technical team to visualize survey results into technical drawings according to project standards.</div>
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="work-date">MAY – OCT 2022</div>
+        <div>
+          <div class="work-company">CV. HRV Planner Consultant</div>
+          <div class="work-role">Surveyor — RDTR Preparation</div>
+          <div class="work-desc">Surveyor for the preparation of the Detailed Spatial Plan (RDTR) for the Siwalan Planning Area, Pekalongan Regency.</div>
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="work-date">JUN – SEP 2022</div>
+        <div>
+          <div class="work-company">CV. Artha Gemilang Engineering</div>
+          <div class="work-role">Intern — Urban Sanitation</div>
+          <div class="work-desc">Preparation of the Sanitation Strategy Document for Kendal Regency.</div>
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="work-date">FEB – MAY 2022</div>
+        <div>
+          <div class="work-company">CV. Pijar Mulya Wisesa</div>
+          <div class="work-role">Surveyor &amp; Data Entry Operator</div>
+          <div class="work-desc">Verification and validation of uninhabitable houses (RTLH) and housing backlog in Pekalongan Regency, covering 25 villages and 5 sub-districts, in collaboration with DISPERAKIM Central Java Province.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="fade-up">
+      <div class="section-label">04 / Academic</div>
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="edu-card fade-up">
+      <div class="edu-year">2018 – 2024</div>
+      <div>
+        <div class="edu-degree">Bachelor's Degree</div>
+        <div class="edu-field">Urban and Regional Planning</div>
+        <div class="edu-school">Universitas Islam Sultan Agung, Semarang</div>
+        <div class="gpa-badge">GPA 3.41 / 4.00</div>
+      </div>
+    </div>
+    <div class="lang-row fade-up">
+      <div class="lang-badge">
+        <div class="lang-name">Indonesian</div>
+        <div class="lang-level">Native · Professional</div>
+      </div>
+      <div class="lang-badge">
+        <div class="lang-name">English</div>
+        <div class="lang-level">Intermediate</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- GAMES -->
+  <section id="games">
+    <div class="fade-up">
+      <div class="section-label">05 / For Fun</div>
+      <h2 class="section-title">Games</h2>
+      <p style="color:var(--muted); font-size:0.85rem; margin-top:-2.5rem; margin-bottom:2.5rem; font-style:italic;">Not hiring me? Maybe you just need a game break :)</p>
+    </div>
+    <div class="games-grid fade-up">
+      <div class="game-card">
+        <div style="overflow:hidden">
+          <img src="./assets/images/img-12.jpg" class="game-img" alt="Animal Ninja">
+        </div>
+        <div class="game-info">
+          <div class="game-tag">Interactive Camera</div>
+          <div class="game-title">Animal Ninja</div>
+          <a href="https://kurniadi271.github.io/Animal-ninja/" target="_blank" class="game-link">Play Game</a>
+        </div>
+      </div>
+      <div class="game-card">
+        <div style="overflow:hidden">
+          <img src="./assets/images/img-13.jpg" class="game-img" alt="Storm Aura">
+        </div>
+        <div class="game-info">
+          <div class="game-tag">Camera-Based</div>
+          <div class="game-title">Storm Aura</div>
+          <a href="https://kurniadi271.github.io/STROM-AURA/" target="_blank" class="game-link">Play Game</a>
+        </div>
+      </div>
+      <div class="game-card">
+        <div style="overflow:hidden">
+          <img src="./assets/images/img-14.jpg" class="game-img" alt="Ultimate Ninja Naruto">
+        </div>
+        <div class="game-info">
+          <div class="game-tag">Motion-Controlled</div>
+          <div class="game-title">Ultimate Ninja Naruto</div>
+          <a href="https://kurniadi271.github.io/Ultimate-Ninja-Naruto/" target="_blank" class="game-link">Play Game</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="fade-up">
+      <div class="section-label">06 / Get in Touch</div>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="contact-grid fade-up">
+      <div class="contact-info">
+        <div class="contact-tagline">Open to new opportunities in urban planning &amp; spatial analysis.</div>
+        <div class="contact-social">
+          <a href="https://www.instagram.com/kurniaaspd/" target="_blank" class="social-link">
+            <div class="social-icon">IG</div>
+            <div class="social-text">
+              <span class="social-platform">Instagram</span>
+              <span class="social-handle">@kurniaaspd</span>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/kurniasupriadi" target="_blank" class="social-link">
+            <div class="social-icon">in</div>
+            <div class="social-text">
+              <span class="social-platform">LinkedIn</span>
+              <span class="social-handle">Kurnia Supriadi</span>
+            </div>
+          </a>
+          <a href="mailto:supriadikurnia271@gmail.com" class="social-link">
+            <div class="social-icon">@</div>
+            <div class="social-text">
+              <span class="social-platform">Email</span>
+              <span class="social-handle">supriadikurnia271@gmail.com</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <form id="contactForm" action="https://formsubmit.co/supriadikurnia271@gmail.com" method="POST" class="contact-form">
+          <input type="hidden" name="_captcha" value="false">
+          <div class="form-field">
+            <label class="form-label" for="email">Your Email</label>
+            <input type="email" name="email" id="email" class="form-input" placeholder="you@example.com" required>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="subject">Subject</label>
+            <input type="text" name="_subject" id="subject" class="form-input" placeholder="Project inquiry" required>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="message">Message</label>
+            <textarea name="message" id="message" class="form-textarea" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button type="submit" id="submitBtn" class="form-submit">Send Message →</button>
+        </form>
+        <div id="thankYouMessage" class="thank-you">
+          ✓ MESSAGE RECEIVED<br><br>
+          Thanks for reaching out. I'll get back to you as soon as possible.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">KURNIA SUPRIADI // URBAN PLANNER // SEMARANG, ID</div>
+    <div class="footer-copy">© 2025 — Built with care</div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    fadeEls.forEach(el => observer.observe(el));
+
+    // Contact form
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn = document.getElementById('submitBtn');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(r => {
+        if (r.ok) {
+          form.style.display = 'none';
+          document.getElementById('thankYouMessage').style.display = 'block';
+        } else {
+          alert('Gagal kirim pesan, coba lagi.');
+          btn.textContent = 'Send Message →';
+          btn.disabled = false;
+        }
+      }).catch(() => {
+        alert('Network error.');
+        btn.textContent = 'Send Message →';
         btn.disabled = false;
-      }
-    }).catch(error => {
-      alert("Oops! Ada masalah jaringan.");
-      btn.innerHTML = "Send message";
-      btn.disabled = false;
+      });
     });
-  });
-</script>
-
-        <div class="card">
-          <div class="card-block">
-            <div class="card" id="games"><h2>Games</h2>
-            <p style="color: #777; font-style: italic;">Not hiring me? Maybe you just need a game break :)</p>
-            </div>
-            <div class="row">
-              
-              <div class="col-md-4">
-                <div class="game-card">
-                  <img src="./assets/images/img-12.jpg" class="img-responsive" alt="Animal Ninja">
-                  <div class="game-overlay">
-                    <h3>Animal Ninja</h3>
-                    <p>Interactive Camera Game</p>
-                    <a href="https://kurniadi271.github.io/Animal-ninja/" target="_blank" class="btn-play">Play Game</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="game-card">
-                  <img src="./assets/images/img-13.jpg" class="img-responsive" alt="Storm Aura">
-                  <div class="game-overlay">
-                    <h3>STROM AURA</h3>
-                    <p>Camera-Based Interaction</p>
-                    <a href="https://kurniadi271.github.io/STROM-AURA/" target="_blank" class="btn-play">Play Game</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="game-card">
-                  <img src="./assets/images/img-14.jpg" class="img-responsive" alt="Ultimate Ninja Naruto">
-                  <div class="game-overlay">
-                    <h3>Ultimate Ninja Naruto</h3>
-                    <p>Motion-Controlled Camera Game</p>
-                    <a href="https://kurniadi271.github.io/Ultimate-Ninja-Naruto/" target="_blank" class="btn-play">Play Game</a>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        </div> </div> </div> </main>
-
-<footer class="footer-container white-text-container text-center">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <p><img src="./assets/images/mashup-icon.svg" alt=""></p>
-        
-<p>
-  <a class="fa-icon fa-icon-2x" href="https://www.instagram.com/" title="Instagram">
-    <i class="fa fa-instagram"></i>
-  </a>
-  <a class="fa-icon fa-icon-2x" href="https://www.linkedin.com/" title="LinkedIn">
-    <i class="fa fa-linkedin"></i>
-  </a>
-</p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-     scrollRevelation('.card');
-  });
-</script>
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID 
-
-<script>
-  (function (i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-      (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date(); a = s.createElement(o),
-      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-  ga('create', 'UA-XXXXX-X', 'auto');
-  ga('send', 'pageview');
-</script>
-
---><script type="text/javascript" src="./main.bc58148c.js"></script></body>
-
-</html> 
+  </script>
+</body>
+</html>
